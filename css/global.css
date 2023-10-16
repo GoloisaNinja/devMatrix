@@ -1,77 +1,8 @@
-* Basic reset */ * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-html {
-	font-size: 62.5%;
-}
-
-body {
-	font-family: 'Bricolage Grotesque', sans-serif;
-	/* font-family: Arial, Helvetica, sans-serif; */
-	margin: 0;
-	position: relative;
-	background-color: var(--primary-bg-color);
-}
-
-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: var(--header-color);
-}
-
-#moon,
-#sun {
-	fill: var(--basic-text-color);
-}
-
-.form {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-}
-
-input {
-	border: 2px solid var(--orange-color);
-	padding: 0.25rem;
-	min-width: 50px;
-}
-
-button {
-	background-color: var(--orange-color);
-	color: white;
-	font-size: 16px;
-	font-weight: bold;
-	padding: 0.75rem;
-	border: none;
-	cursor: pointer;
-	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-button:disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
-}
-
-button:hover {
-	transition: 0.4s ease-in-out;
-	background-color: var(--hover-orange-color);
-}
-
-button + .blue {
-	transition: 0.4s ease-in-out;
-	background-color: var(--blue-color);
-}
-button + .blue:hover {
-	background-color: var(--hover-blue-color);
-}
-
 /* Color/Theme vars */
 
 :root {
 	--blue-color: #485be8;
+	--visions-blue-color: #1d3a8b;
 	--orange-color: #eb8334;
 	--red-color: #eb343d;
 	--yellow-color: #e8eb34;
@@ -81,7 +12,9 @@ button + .blue:hover {
 	--dark-grey-color: #4f4f4f;
 	--light-grey-color: #c9c0cc;
 	--hover-orange-color: #c76f2c;
+	--hover-red-color: #ac252c;
 	--hover-blue-color: #3948b8;
+	--input-box-grey: #f2f2f2;
 }
 
 html[data-theme='light'] {
@@ -97,6 +30,7 @@ html[data-theme='light'] {
 	--input-bg: none;
 	--score-color: white;
 	--header-color: var(--light-grey-color);
+	--input-box-color: var(--input-box-grey);
 }
 html[data-theme='dark'] {
 	--grey-color: #8a828c;
@@ -111,6 +45,84 @@ html[data-theme='dark'] {
 	--input-bg: var(--dark-grey-color);
 	--score-color: white;
 	--header-color: var(--orange-color);
+	--input-box-color: #252526;
+}
+
+/* Basic reset */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	/* font-family: Arial, Helvetica, sans-serif; */
+	margin: 0;
+	position: relative;
+	background-color: var(--primary-bg-color);
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--header-color);
+}
+
+select {
+	font-family: 'Poppins', sans-serif;
+}
+
+input {
+	border: 2px solid var(--orange-color);
+	padding: 0.25rem;
+	min-width: 50px;
+}
+
+button {
+	background-color: var(--orange-color);
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: 'Poppins', sans-serif;
+	padding: 0.75rem;
+	border: none;
+	cursor: pointer;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+button:hover {
+	transition: 0.4s ease-in-out;
+	background-color: var(--hover-orange-color);
+}
+
+button.blue {
+	transition: 0.4s ease-in-out;
+	background-color: var(--blue-color);
+}
+button.blue:hover {
+	background-color: var(--hover-blue-color);
+}
+button.red {
+	transition: 0.4s ease-in-out;
+	background-color: var(--red-color);
+}
+button.red:hover {
+	background-color: var(--hover-red-color);
+}
+
+fieldset {
+	background: var(--input-box-grey);
 }
 
 /* Show and Hide */
@@ -153,6 +165,21 @@ p {
 .txt-xLarge {
 	font-size: 2.2rem;
 }
+.fw500 {
+	font-weight: 500;
+}
+.fw600 {
+	font-weight: 600;
+}
+.fw700 {
+	font-weight: 700;
+}
+.fw800 {
+	font-weight: 800;
+}
+.fw900 {
+	font-weight: 900;
+}
 
 /* Text decoration */
 
@@ -169,6 +196,23 @@ p {
 	transform: rotate(-90deg);
 	margin: 0;
 	flex: 1;
+}
+
+/* Tooltips */
+
+.ui-tooltip-content {
+	font-size: 1.2rem;
+	font-weight: bold;
+	font-family: 'Poppins', sans-serif;
+	padding: 1rem;
+}
+.ui-tooltip.normal {
+	background: var(--visions-blue-color);
+	color: white;
+}
+.ui-tooltip.offset {
+	background: var(--dark-grey-color);
+	color: white;
 }
 
 /* Alignment */
@@ -276,6 +320,12 @@ p {
 .mg-top-large {
 	margin-top: 2rem;
 }
+.mg-top-xlarge {
+	margin-top: 3rem;
+}
+.mg-bottom-xsmall {
+	margin-bottom: 0.5rem;
+}
 .mg-bottom-small {
 	margin-bottom: 1rem;
 }
@@ -284,6 +334,9 @@ p {
 }
 .mg-bottom-large {
 	margin-bottom: 2rem;
+}
+.mg-bottom-xlarge {
+	margin-bottom: 3rem;
 }
 
 /* Background Color */
@@ -312,6 +365,9 @@ p {
 .bg-light-grey {
 	background: var(--light-grey-color);
 }
+.bg-box-grey {
+	background: var(--input-box-grey);
+}
 
 /* Font colors */
 
@@ -320,4 +376,23 @@ p {
 }
 .color-inverted {
 	color: var(--inverted-text-color);
+}
+.white {
+	color: white;
+}
+.black {
+	color: black;
+}
+
+/* Global Element Styles */
+
+#moon,
+#sun {
+	fill: var(--basic-text-color);
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }

@@ -1,27 +1,45 @@
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon" />
-		<link rel="preconnect" href=https://fonts.googleapis.com> <link
-		rel="preconnect" href=https://fonts.gstatic.com crossorigin> <link
-		href=https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200;10..48,300;10..48,400;10..48,500;10..48,600;10..48,700;10..48,800&display=swap
-		rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
 		<link href="./css/global.css" rel="stylesheet" />
 		<link href="./css/index.css" rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
+			integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
 			integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+			integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
 		<title>Development Matrix Mock</title>
 	</head>
+
 	<body>
-		<header class="pd-left-small pd-right-small">
-			<h1 class="color-basic">Employee Assessment Development Tool</h1>
-			<div class="theme-btn-moon" id="theme-btn">
+		<header class="pd-left-large pd-right-large pd-top-medium pd-bottom-medium">
+			<h1 class="color-basic pd-left-small">
+				Employee Assessment Development Tool
+			</h1>
+			<div class="theme-btn-moon pd-right-small hide" id="theme-btn">
 				<svg
 					id="moon"
 					xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +52,7 @@
 					/>
 				</svg>
 			</div>
-			<div class="theme-btn-sun hide" id="theme-btn">
+			<div class="theme-btn-sun pd-right-small" id="theme-btn">
 				<svg
 					id="sun"
 					xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +66,7 @@
 				</svg>
 			</div>
 		</header>
-		<main>
+		<main class="pd-left-large pd-right-large">
 			<div class="container">
 				<div class="main-upper">
 					<p class="center txt-medium italic pd-medium color-basic">
@@ -56,15 +74,13 @@
 						categories to see final weighted scores and corresponding
 						recommendations.
 					</p>
-					<div
-						class="control-container pd-small mg-top-medium mg-bottom-medium"
-					>
+					<div class="control-container pd-small mg-top-medium">
 						<div>
 							<button class="mg-right-large" id="reset-btn">
 								Reset Scores
 							</button>
-							<button class="blue" id="recommendations" disabled>
-								See Recommendations
+							<button class="blue" id="assessment-btn" disabled>
+								Start Assessment
 							</button>
 						</div>
 						<div>
@@ -79,8 +95,16 @@
 						</div>
 					</div>
 				</div>
+				<div class="pd-small mg-top-small mg-bottom-medium">
+					<p id="score-range" class="txt-small bold italic underline">
+						For each input enter a score between 1 and 5
+					</p>
+				</div>
 				<div class="main-grid">
-					<div class="form-container pd-small">
+					<!-- Performance Score Inputs -->
+					<div
+						class="form-container pd-left-small pd-right-small pd-top-medium pd-bottom-medium"
+					>
 						<div class="form">
 							<div class="ui">
 								<label class="bold txt-medium color-basic">Scorecard:</label>
@@ -124,6 +148,7 @@
 									max="5"
 								/>
 							</div>
+							<div class="flex-container"></div>
 							<div class="ui-output pd-small bg-blue">
 								<p class="txt-large mg-none color-basic">
 									Performance Score:
@@ -135,7 +160,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-container-potential pd-small">
+					<!-- Potential Score Inputs -->
+					<div
+						class="form-container-potential pd-left-small pd-right-small pd-top-medium pd-bottom-medium"
+					>
 						<div class="form">
 							<div class="ui">
 								<label class="bold txt-medium color-basic"
@@ -212,12 +240,13 @@
 							</div>
 						</div>
 					</div>
+					<!-- 9 Box Grid -->
 					<div class="matrix-container">
 						<div class="matrix">
 							<div class="perf-border">
 								<p class="vertical-text color-basic"><b>Performance</b></p>
 							</div>
-							<div class="po-border">
+							<div class="po-border pd-top-small pd-bottom-small">
 								<p class="color-basic"><b>Potential</b></p>
 							</div>
 							<div class="rating-vertical">
@@ -227,37 +256,37 @@
 							</div>
 							<div class="empty"></div>
 							<div class="category c-left">
-								<div class="basic-box std bg-yellow" id="A4">
+								<div class="basic-box std bg-yellow" id="A4" title="">
 									<p>Valued Specialist</p>
 								</div>
-								<div class="basic-box std bg-orange" id="B5">
+								<div class="basic-box std bg-orange" id="B5" title="">
 									<p>Emerging Specialist</p>
 								</div>
-								<div class="basic-box std bg-red" id="C6">
+								<div class="basic-box std bg-red" id="C6" title="">
 									<p>Under Performer</p>
 								</div>
 								<div class="basic-box sm color-basic"><b>LOW</b></div>
 							</div>
 							<div class="category c-middle">
-								<div class="basic-box std bg-green" id="A3">
+								<div class="basic-box std bg-green" id="A3" title="">
 									<p>Emerging Potential</p>
 								</div>
-								<div class="basic-box std bg-yellow" id="B4">
+								<div class="basic-box std bg-yellow" id="B4" title="">
 									<p>Solid Contributor</p>
 								</div>
-								<div class="basic-box std bg-orange" id="C5">
+								<div class="basic-box std bg-orange" id="C5" title="">
 									<p>Inconsistent Performer</p>
 								</div>
 								<div class="basic-box sm color-basic"><b>MEDIUM</b></div>
 							</div>
 							<div class="category c-right">
-								<div class="basic-box std bg-blue" id="A2">
+								<div class="basic-box std bg-blue" id="A2" title="">
 									<p>Top Talent</p>
 								</div>
-								<div class="basic-box std bg-green" id="B3">
+								<div class="basic-box std bg-green" id="B3" title="">
 									<p>Rising Star</p>
 								</div>
-								<div class="basic-box std bg-yellow" id="C4">
+								<div class="basic-box std bg-yellow" id="C4" title="">
 									<p>New to Role</p>
 								</div>
 								<div class="basic-box sm color-basic"><b>HIGH</b></div>
@@ -265,26 +294,43 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</main>
-		<div id="overlay" class="overlay hide"></div>
-		<div id="modal" class="modal-container pd-medium hide">
-			<div>
-				<div class="modal-upper">
-					<h4 id="title" class="mg-none"></h4>
-					<button id="close-btn">X</button>
-				</div>
-				<div class="table">
-					<div class="tr">
-						<div class="th">Paths</div>
-						<div class="th">Focus</div>
-						<div class="th">Skills to Develop</div>
-						<div class="th">Tools</div>
+				<!-- Assessment Results Bottom Output Section -->
+				<div class="development-container pd-small mg-bottom-large hide">
+					<h3 class="mg-top-medium mg-bottom-medium pd-small bg-orange white">
+						Assessment Results: <span id="matrix-title"></span>
+					</h3>
+					<h5
+						id="table-description"
+						class="txt-medium mg-bottom-xlarge mg-top-xlarge"
+					></h5>
+					<div class="table">
+						<div class="tr">
+							<div class="th">Paths</div>
+							<div class="th">Focus</div>
+							<div class="th">Skills to Develop</div>
+							<div class="th">Tools</div>
+						</div>
 					</div>
 				</div>
 			</div>
+		</main>
+		<!-- Form Modal Pop Up and Overlay -->
+		<div id="overlay" class="overlay hide"></div>
+		<div id="modal" class="modal-container pd-medium bg-light-grey hide">
+			<div>
+				<div class="modal-upper">
+					<h4 id="modal-title" class="mg-none"></h4>
+					<button class="red" id="close-btn">X</button>
+				</div>
+				<div class="mg-top-small">
+					<h5 class="txt-small mg-bottom-small" id="definition"></h5>
+				</div>
+				<div class="container modal-form-container">
+					<p class="fw800 txt-large" id="instructions"></p>
+				</div>
+			</div>
 		</div>
-		<script type="text/javascript" src="./js/roleobj.js"></script>
+		<script type="text/javascript" src="./js/pathMaps.js"></script>
 		<script type="text/javascript" src="./js/action.js"></script>
 	</body>
 </html>
